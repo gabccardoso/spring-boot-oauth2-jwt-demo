@@ -15,6 +15,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String phone;
+    private LocalDate birthDate;
 
     @Column(unique = true)
     private String email;
@@ -34,6 +36,8 @@ public class User implements UserDetails {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.phone = phone;
+        this.birthDate = birthDate;
     }
 
     public Long getId() {
@@ -58,6 +62,30 @@ public class User implements UserDetails {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     @Override
