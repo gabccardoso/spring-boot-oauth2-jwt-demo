@@ -2,6 +2,7 @@ package com.devsuperior.demo.services;
 
 import java.util.List;
 
+import com.devsuperior.demo.dto.ProductMinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,8 +24,8 @@ public class ProductService {
 	}
 
 	@Transactional(readOnly = true)
-	public List<ProductDTO> findAll() {
-		return productRepository.findAll().stream().map(x -> new ProductDTO(x)).toList();
+	public List<ProductMinDTO> findAll() {
+		return productRepository.findAll().stream().map(ProductMinDTO::new).toList();
 	}
 
 	@Transactional

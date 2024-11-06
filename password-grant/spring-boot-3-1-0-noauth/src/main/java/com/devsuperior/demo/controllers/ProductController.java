@@ -3,6 +3,7 @@ package com.devsuperior.demo.controllers;
 import java.net.URI;
 import java.util.List;
 
+import com.devsuperior.demo.dto.ProductMinDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,8 +27,8 @@ public class ProductController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
 	@GetMapping
-	public ResponseEntity<List<ProductDTO>> findAll() {
-		List<ProductDTO> list = productService.findAll();
+	public ResponseEntity<List<ProductMinDTO>> findAll() {
+		List<ProductMinDTO> list = productService.findAll();
 		return ResponseEntity.ok(list);
 	}
 
