@@ -2,6 +2,9 @@ package com.devsuperior.demo.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_product")
 public class Product {
@@ -14,6 +17,12 @@ public class Product {
 	private String description;
 	private Double price;
 	private String imgUrl;
+
+	@ManyToMany
+	@JoinTable(name = "tb_product_category",
+			joinColumns = @JoinColumn(name = "product_id"),
+			inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private Set<Category> categories = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -53,5 +62,13 @@ public class Product {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public Set<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
 	}
 }
